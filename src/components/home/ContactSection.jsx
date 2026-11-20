@@ -9,11 +9,12 @@ const contactMethods = [
   [MapPin, 'Get Directions', 'New York Lane, North Bel-Air, Malis, Guiguinto, Bulacan 3015', 'https://www.bing.com/maps/default.aspx?where1=New%20York%20Lane%2C%20North%20Bel-Air%2C%20Malis%2C%20Guiguinto%2C%20Bulacan%203015'],
 ]
 
-export function ContactSection() {
+export function ContactSection({ standalone = false }) {
+  const Heading = standalone ? 'h1' : 'h2'
   return (
     <section id="contact" className="section contact" aria-labelledby="contact-heading" tabIndex={-1}>
       <div className="wrap">
-        <h2 id="contact-heading">Contact</h2>
+        <Heading id="contact-heading">Contact Zero Pest Control</Heading>
         <ul className="contact-grid">
           {contactMethods.map(([Icon, label, value, href]) => (
             <li key={href}>

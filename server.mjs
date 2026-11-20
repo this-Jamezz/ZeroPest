@@ -263,7 +263,7 @@ if (process.argv.includes('--dev')) {
   app.use(vite.middlewares)
 } else {
   app.use(express.static('dist'))
-  app.get(['/', '/staff'], (req, res) => res.sendFile(resolve('dist/index.html')))
+  app.get(['/', '/staff', '/contact', '/services/:service'], (req, res) => res.sendFile(resolve('dist/index.html')))
 }
 app.use((error, req, res, next) => {
   console.error(error.message)

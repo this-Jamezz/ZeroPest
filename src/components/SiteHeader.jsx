@@ -5,7 +5,7 @@ import { Brand } from './Brand.jsx'
 const links = [['Home', '#home'], ['Services', '#services'], ['About', '#about'], ['FAQ', '#faq'], ['Request a Visit', '#book'], ['Contact', '#contact']]
 const compactNavigation = '(max-width: 53rem)'
 
-export function SiteHeader() {
+export function SiteHeader({ interior = false }) {
   const [compact, setCompact] = useState(() => matchMedia(compactNavigation).matches)
   const [expanded, setExpanded] = useState(false)
   const [active, setActive] = useState('#home')
@@ -20,6 +20,7 @@ export function SiteHeader() {
     return () => media.removeEventListener('change', update)
   }, [])
   useEffect(() => {
+    if (interior) return
     const sections = links.map(([, href]) => document.getElementById(href.slice(1)))
     const page = document.documentElement
     let frame = 0
@@ -50,14 +51,14 @@ export function SiteHeader() {
       resize.disconnect()
       cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [interior])
   function dismiss() {
     if (compact && nativePopover) list.current.hidePopover()
     setExpanded(false)
   }
-  return <header ref={header} className="header" data-at-top={atTop}>
+  return <header ref={header} className={interior ? 'header header-interior' : 'header'} data-at-top={!interior && atTop}>
     <div className="wrap nav">
-      <Brand onClick={dismiss} />
+      <Brand href={interior ? '/#home' : '#home'} onClick={dismiss} />
       <nav className="site-nav" aria-label="Main navigation">
         {compact && <button type="button" className="menu" aria-controls="site-menu"
           popoverTarget={nativePopover ? 'site-menu' : undefined}
@@ -68,8 +69,8 @@ export function SiteHeader() {
         <ul id="site-menu" ref={list} className="site-menu" popover={compact && nativePopover ? 'auto' : undefined}
           hidden={compact && !nativePopover && !expanded}>
           {links.map(([label, href]) => <li key={href}>
-            <a className="nav-link" href={href}
-              aria-current={active === href ? 'location' : undefined} onClick={dismiss}>
+            <a className="nav-link" href={interior ? '/' + href : href}
+              aria-current={!interior && active === href ? 'location' : undefined} onClick={dismiss}>
               {label}
             </a>
           </li>)}

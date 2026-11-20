@@ -23,7 +23,9 @@ export function ServicesSection() {
                 decoding="async"
               />
               <p>{description}</p>
-              <a href="#contact">Call Us</a>
+              <a className="service-details" href={`/services/${image}`} aria-label={`Service details for ${title}`}>
+                Service details
+              </a>
             </article>
           ))}
         </div>
