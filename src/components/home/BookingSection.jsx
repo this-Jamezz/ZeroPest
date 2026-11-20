@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ShieldCheck, CalendarDays, Clock3 } from 'lucide-react'
-import { services } from '../../data/services.js'
+import { services } from '../../content/services.js'
 import { api } from '../../lib/api.js'
 
 const bookingDateFormat = new Intl.DateTimeFormat('en-CA', {

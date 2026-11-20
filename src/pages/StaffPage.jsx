@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BookingRow } from '../components/staff/BookingRow.jsx'
 import { ReferralForm } from '../components/staff/ReferralForm.jsx'
 import { statuses, dollars, write } from '../components/staff/bookingFields.js'
-import { services } from '../data/services.js'
+import { services } from '../content/services.js'
 import { api } from '../lib/api.js'
 
 export default function StaffPage() {

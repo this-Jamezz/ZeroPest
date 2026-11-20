@@ -1,5 +1,5 @@
 import React from 'react'
-import { services } from '../../data/services.js'
+import { services } from '../../content/services.js'
 
 export function ServicesSection() {
   return (

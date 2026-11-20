@@ -1,6 +1,6 @@
 import React from 'react'
 import { ChevronDown } from 'lucide-react'
-import { faq } from '../../data/faq.js'
+import { faq } from '../../content/faq.js'
 
 export function FaqSection() {
   return (
