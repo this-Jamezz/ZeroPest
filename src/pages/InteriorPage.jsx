@@ -34,7 +34,6 @@ function ServiceDetails({ service }) {
         </div>
         <figure>
           <img src={`/services/${service.image}.jpg`} alt={service.alt} fetchPriority="high" />
-          <figcaption>AI-generated service illustration</figcaption>
         </figure>
       </div>
       <section className="service-process" aria-labelledby="process-heading">
@@ -49,7 +48,6 @@ function ServiceDetails({ service }) {
           </ol>
           <figure>
             <img src={`/services/${service.image}-inspection.webp`} alt={service.inspectionAlt} loading="lazy" decoding="async" />
-            <figcaption>AI-generated inspection illustration</figcaption>
           </figure>
         </div>
       </section>
